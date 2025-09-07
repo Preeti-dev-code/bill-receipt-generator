@@ -3,6 +3,8 @@ import { ReceiptData } from './types';
 import ReceiptForm from './components/ReceiptForm';
 import ReceiptPreview from './components/ReceiptPreview';
 import Header from './components/Header';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/AuthContext';
 
 const generateInitialData = (): ReceiptData => {
   const now = new Date();
@@ -27,8 +29,7 @@ const generateInitialData = (): ReceiptData => {
   };
 };
 
-const App: React.FC = () => {
-  
+const BillGeneratorApp: React.FC = () => {
   const [receiptData, setReceiptData] = useState<ReceiptData>(generateInitialData);
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -92,6 +93,16 @@ const App: React.FC = () => {
         </div>
       </main>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <AuthProvider>
+      <ProtectedRoute>
+        <BillGeneratorApp />
+      </ProtectedRoute>
+    </AuthProvider>
   );
 };
 

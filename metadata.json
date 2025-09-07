@@ -1,5 +1,5 @@
 {
-  "name": "Petrol Bill Receipt Generator",
-  "description": "A dynamic application to generate and customize petrol bill receipts. Users can input various details like station name, fuel type, amount, and date to create a realistic, printable receipt preview in real-time.",
+  "name": "Bill Receipt Generator",
+  "description": "A dynamic application to generate and customize fuel bill receipts. Users can input various details like station name, fuel type, amount, and date to create a realistic, printable receipt preview in real-time.",
   "requestFramePermissions": []
 }

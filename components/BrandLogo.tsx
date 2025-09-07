@@ -10,9 +10,32 @@ const logos: Record<string, string> = {
 };
 
 const BrandLogo: React.FC<{ brand: string; template: string }> = ({ brand, template }) => {
+    const [imageError, setImageError] = React.useState(false);
     const logoSrc = logos[brand] || logos['default'];
     const isIndianOilClassic = brand === 'Indian Oil' && template === 'Classic Printer';
-    return <img src={logoSrc} alt={`${brand} Logo`} className={`w-full h-full object-contain ${isIndianOilClassic ? 'filter grayscale' : ''}`} />;
+    
+    const handleImageError = () => {
+        setImageError(true);
+    };
+    
+    if (imageError) {
+        return (
+            <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-600 rounded">
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-bold">
+                    {brand.charAt(0)}
+                </span>
+            </div>
+        );
+    }
+    
+    return (
+        <img 
+            src={logoSrc} 
+            alt={`${brand} Logo`} 
+            className={`w-full h-full object-contain ${isIndianOilClassic ? 'filter grayscale' : ''}`}
+            onError={handleImageError}
+        />
+    );
 };
 
 export default BrandLogo;
