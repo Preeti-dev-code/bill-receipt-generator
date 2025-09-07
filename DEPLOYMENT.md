@@ -89,9 +89,15 @@ To update your deployed site:
 
 The following files are configured for GitHub Pages:
 
-- `vite.config.ts` - Sets the base path for GitHub Pages
+- `vite.config.ts` - Dynamically sets the base path (root for dev, `/bill-receipt-generator/` for production)
 - `.github/workflows/deploy.yml` - GitHub Actions workflow
 - `package.json` - Contains deployment scripts
+
+### Development vs Production
+
+The Vite configuration automatically handles different base paths:
+- **Development**: Serves from root path `/` for local development
+- **Production**: Uses `/bill-receipt-generator/` base path for GitHub Pages
 
 ## Security Note
 
